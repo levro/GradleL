@@ -5,6 +5,9 @@ public class App {
 
         String sum = Utils.sumOfTwoStrings( "120", "53" );
         System.out.println(sum);
+        Utils.addPropertyToFile( "newProp=300" );
+        System.out.println( "---------------------------------------------" );
+        System.out.println( Utils.readPropertyFromFile( "newProp" ) );
     }
 
     public String getGreeting() {
