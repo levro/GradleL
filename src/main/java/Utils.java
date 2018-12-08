@@ -42,8 +42,39 @@ public class Utils {
             writer.append(str);
             writer.close();
         } catch ( IOException e ) {
-            System.out.println("IOException!!!!!");
-            System.out.println(e);
+            log.error("IOException!!!!!" + e);
+        }
+    }
+
+    static void modifyProperty(String key, String value)
+    {
+        File fileToBeModified = new File(PROPERTIES_FILE);
+        String newContent = "";
+        BufferedReader reader = null;
+        FileWriter writer = null;
+        try {
+            reader = new BufferedReader(new FileReader(fileToBeModified));
+            String line = reader.readLine();
+            while (line != null) {
+                if (line.contains(key)) {
+                    line = key + "=" + value;
+                }
+                newContent = newContent + line + System.lineSeparator();
+                line = reader.readLine();
+            }
+
+            writer = new FileWriter(fileToBeModified);
+            writer.write(newContent.substring(0, newContent.length() - 2 ));
+        }
+        catch (IOException e) { e.printStackTrace(); }
+        finally {
+            try {
+                reader.close();
+                writer.close();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -59,7 +90,7 @@ public class Utils {
                 }
             }
         } catch ( IOException e ) {
-            System.out.println("IOException!!!!!");
+            log.error("IOException!!!!!" + e);
             result = e.toString();
         }
         return result;
