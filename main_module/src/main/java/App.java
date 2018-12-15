@@ -34,6 +34,11 @@ public class App {
         Utils.modifyProperty(propertyToModiy, "water");
         log.info("Read changed property");
         System.out.println( Utils.readPropertyFromFile( propertyToModiy ) );
+
+
+        FileOperations fileOperations = new FileOperations();
+        fileOperations.setValue(17);
+        System.out.println("Get fileOperations.value - " + fileOperations.getValue());
     }
 
     public String getGreeting() {

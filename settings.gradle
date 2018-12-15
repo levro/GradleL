@@ -8,3 +8,5 @@
  */
 
 rootProject.name = 'GradleL'
+
+include 'main_module', 'utils_module'
