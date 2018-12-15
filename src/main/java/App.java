@@ -1,15 +1,19 @@
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
 
 public class App {
 
     final static Logger log = LogManager.getLogger(App.class);
 
     public static void main(String[] args) {
+
+
         log.error("This is not error message with error level");
         System.out.println(new App().getGreeting());
 

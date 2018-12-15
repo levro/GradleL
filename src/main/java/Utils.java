@@ -10,7 +10,7 @@ public class Utils {
     static final Level epicFail = Level.forName("EPIC.FAIL!", 50);
     final static Logger log = LogManager.getLogger( Utils.class);
 
-    private final static String PROPERTIES_FILE = "gradle.properties";
+    private final static String PROPERTIES_FILE = "custom.properties";
 
     public static String sumOfTwoStrings (String str1, String str2) {
 

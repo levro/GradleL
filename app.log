@@ -8,16 +8,16 @@
 2018-12-10 13:07:33,931 FATAL [main] Utils (Utils.java:19) - This is a fatal message
 2018-12-10 13:07:33,932 EPIC.FAIL! [main] Utils (Utils.java:20) - This is a epicFail message
 2018-12-10 13:07:33,932 INFO  [main] App (App.java:14) - =============================================================================================
-2018-12-15 21:47:23,485 ERROR [main] App (App.java:13) - This is not error message with error level
-2018-12-15 21:47:23,495 INFO  [main] Utils (Utils.java:17) - Test log levels
-2018-12-15 21:47:23,495 TRACE [main] Utils (Utils.java:19) - This is a trace message
-2018-12-15 21:47:23,495 DEBUG [main] Utils (Utils.java:20) - This is a debug message
-2018-12-15 21:47:23,495 INFO  [main] Utils (Utils.java:21) - This is an info message
-2018-12-15 21:47:23,495 WARN  [main] Utils (Utils.java:22) - This is a warn message
-2018-12-15 21:47:23,495 ERROR [main] Utils (Utils.java:23) - This is an error message
-2018-12-15 21:47:23,495 FATAL [main] Utils (Utils.java:24) - This is a fatal message
-2018-12-15 21:47:23,495 EPIC.FAIL! [main] Utils (Utils.java:25) - This is a epicFail message
-2018-12-15 21:47:23,495 INFO  [main] App (App.java:18) - =============================================================================================
-2018-12-15 21:47:23,495 INFO  [main] App (App.java:23) - Add to file 'gradle.properties' new property [1544903243495] with current time
-2018-12-15 21:47:23,505 INFO  [main] App (App.java:29) - Change property [mainProperty] in 'gradle.properties' file
-2018-12-15 21:47:23,516 INFO  [main] App (App.java:31) - Read changed property
+2018-12-11 22:57:30,445 ERROR [main] App (App.java:13) - This is not error message with error level
+2018-12-11 22:57:30,445 INFO  [main] Utils (Utils.java:17) - Test log levels
+2018-12-11 22:57:30,460 TRACE [main] Utils (Utils.java:19) - This is a trace message
+2018-12-11 22:57:30,460 DEBUG [main] Utils (Utils.java:20) - This is a debug message
+2018-12-11 22:57:30,460 INFO  [main] Utils (Utils.java:21) - This is an info message
+2018-12-11 22:57:30,460 WARN  [main] Utils (Utils.java:22) - This is a warn message
+2018-12-11 22:57:30,460 ERROR [main] Utils (Utils.java:23) - This is an error message
+2018-12-11 22:57:30,460 FATAL [main] Utils (Utils.java:24) - This is a fatal message
+2018-12-11 22:57:30,460 EPIC.FAIL! [main] Utils (Utils.java:25) - This is a epicFail message
+2018-12-11 22:57:30,460 INFO  [main] App (App.java:18) - =============================================================================================
+2018-12-11 22:57:30,460 INFO  [main] App (App.java:23) - Add to file 'gradle.properties' new property [1544561850460] with current time
+2018-12-11 22:57:30,476 INFO  [main] App (App.java:29) - Change property [mainProperty] in 'gradle.properties' file
+2018-12-11 22:57:30,492 INFO  [main] App (App.java:31) - Read changed property
