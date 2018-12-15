@@ -34,11 +34,12 @@ task readProps{
     }
 }
 
-task writeProps{
+task writeProps {
     doLast {
         Properties props = new Properties()
         File propsFile = new File("props.txt")
         Integer rand = new Random().next(4)
+        props.setProperty('defaultKey', "defaultValue")
         props.setProperty('superKey', rand.toString())
         props.store(propsFile.newWriter(), null)
     }
