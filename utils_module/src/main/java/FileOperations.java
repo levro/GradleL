@@ -8,32 +8,24 @@ import java.util.Iterator;
 
 public class FileOperations {
 
-    public static void writeXLS (String str, String fileName) throws IOException {
+    public static void writeXLS (String[] records, String fileName) throws IOException {
         Workbook book = new HSSFWorkbook();
-        Sheet sheet = book.createSheet("Birthdays");
+        Sheet sheet = book.createSheet("Records");
 
-        // Нумерация начинается с нуля
-        Row row = sheet.createRow(0);
+        for (int i = 0; i < records.length; i++) {
+            Row row = sheet.createRow(i);
+            Cell name = row.createCell(0);
+            name.setCellValue(records[i]);
 
-        // Мы запишем имя и дату в два столбца
-        // имя будет String, а дата рождения --- Date,
-        // формата dd.mm.yyyy
-        Cell name = row.createCell(0);
+            Cell time = row.createCell(1);
+            DataFormat format = book.createDataFormat();
+            CellStyle dateStyle = book.createCellStyle();
+            dateStyle.setDataFormat(format.getFormat("dd.mm.yyyy HH:MM:SS"));
+            time.setCellStyle(dateStyle);
+            time.setCellValue(new Date());
 
-        name.setCellValue(str);
-
-        Cell time = row.createCell(1);
-
-        DataFormat format = book.createDataFormat();
-        CellStyle dateStyle = book.createCellStyle();
-        dateStyle.setDataFormat(format.getFormat("dd.mm.yyyy HH:MM:SS"));
-        time.setCellStyle(dateStyle);
-
-        time.setCellValue(new Date());
-
-        // Меняем размер столбца
-        sheet.autoSizeColumn(1);
-
+            sheet.autoSizeColumn(1);
+        }
         book.write(new FileOutputStream(fileName));
         book.close();
     }
@@ -64,6 +56,5 @@ public class FileOperations {
         }
         workbook.close();
         excelInputStream.close();
-
     }
 }

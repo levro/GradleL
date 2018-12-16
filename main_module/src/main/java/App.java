@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class App {
 
@@ -36,7 +37,8 @@ public class App {
 
 */
 
-        FileOperations.writeXLS("Borodopul", "testtt.xls" );
+        String[] xlsRecords = {"Borodops", "Gwanrole", "Panatarg"};
+        FileOperations.writeXLS(xlsRecords, "testtt.xls" );
 
         FileOperations.readXLS("testtt.xls" );
     }
