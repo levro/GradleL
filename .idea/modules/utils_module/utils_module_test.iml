@@ -6,7 +6,7 @@
     <content url="file://$MODULE_DIR$/../../../utils_module/src/test" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="utils_module_main" />
+    <orderEntry type="library" name="Gradle: org.apache.poi:poi:3.17" level="project" />
   </component>
   <component name="TestModuleProperties" production-module="utils_module_main" />
 </module>

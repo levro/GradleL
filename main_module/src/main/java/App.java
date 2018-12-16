@@ -1,20 +1,19 @@
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Properties;
 
 public class App {
 
     final static Logger log = LogManager.getLogger(App.class);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
 
-        log.error("This is not error message with error level");
+/*        log.error("This is not error message with error level");
         System.out.println(new App().getGreeting());
 
         String sum = Utils.sumOfTwoStrings("120", "53");
@@ -35,10 +34,11 @@ public class App {
         log.info("Read changed property");
         System.out.println( Utils.readPropertyFromFile( propertyToModiy ) );
 
+*/
 
-        FileOperations fileOperations = new FileOperations();
-        fileOperations.setValue(17);
-        System.out.println("Get fileOperations.value - " + fileOperations.getValue());
+        FileOperations.writeXLS("Borodopul", "testtt.xls" );
+
+        FileOperations.readXLS("testtt.xls" );
     }
 
     public String getGreeting() {
