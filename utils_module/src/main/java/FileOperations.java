@@ -1,10 +1,11 @@
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 
 public class FileOperations {
 
@@ -23,38 +24,59 @@ public class FileOperations {
             dateStyle.setDataFormat(format.getFormat("dd.mm.yyyy HH:MM:SS"));
             time.setCellStyle(dateStyle);
             time.setCellValue(new Date());
-
+            sheet.autoSizeColumn(0);
             sheet.autoSizeColumn(1);
         }
         book.write(new FileOutputStream(fileName));
         book.close();
     }
 
-    public static void readXLS(String fileName) throws IOException{
+    public static List<Object[]> readXLS(String fileName) throws IOException{
 
+        List<Object[]> result = new ArrayList<>();
         FileInputStream excelInputStream = new FileInputStream(new File(fileName));
         Workbook workbook = new HSSFWorkbook(excelInputStream);
         Sheet sheet = workbook.getSheetAt(0);
-        Iterator < Row > rowItr = sheet.iterator();
-        int rowNum = 0;
+        Iterator <Row> rowItr = sheet.iterator();
         while (rowItr.hasNext()) {
             Row row = rowItr.next();
-            Iterator < Cell > cellItr = row.iterator();
-            System.out.print(rowNum + ". ");
+            List<String> currentRow = new ArrayList<>();
+            Iterator <Cell> cellItr = row.iterator();
             while (cellItr.hasNext()) {
                 Cell cell = cellItr.next();
                 if (cell.getCellTypeEnum() == CellType.STRING) {
-                    System.out.print(cell.getStringCellValue() + "\t\t");
+                    currentRow.add(cell.getStringCellValue());
                 } else if (HSSFDateUtil.isCellDateFormatted(cell)) {
-                    System.out.print(cell.getDateCellValue() + "\t\t");
+                    currentRow.add(cell.getDateCellValue().toString());
                 } else if (cell.getCellTypeEnum() == CellType.NUMERIC) {
-                    System.out.print(cell.getNumericCellValue() + "\t\t");
+                    currentRow.add(String.valueOf(cell.getNumericCellValue()));
                 }
             }
-            System.out.println();
-            rowNum++;
+            result.add(currentRow.toArray());
         }
         workbook.close();
         excelInputStream.close();
+        return result;
+    }
+
+
+    public static void appendXLS(String[] xlsRecords, String fileName) throws IOException {
+        FileInputStream excelInputStream = new FileInputStream(new File(fileName));
+        Workbook book = new HSSFWorkbook(excelInputStream);
+        Sheet sheet = book.getSheetAt(0);
+        int startRow = sheet.getLastRowNum() + 1;
+        for (int i = 0; i < xlsRecords.length; i++) {
+            Row row = sheet.createRow(i + startRow);
+            Cell name = row.createCell(0);
+            name.setCellValue(xlsRecords[i]);
+            Cell time = row.createCell(1);
+            DataFormat format = book.createDataFormat();
+            CellStyle dateStyle = book.createCellStyle();
+            dateStyle.setDataFormat(format.getFormat("dd.mm.yyyy HH:MM:SS"));
+            time.setCellStyle(dateStyle);
+            time.setCellValue(new Date());
+        }
+        book.write(new FileOutputStream(fileName));
+        book.close();
     }
 }

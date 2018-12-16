@@ -40,8 +40,25 @@ public class App {
         String[] xlsRecords = {"Borodops", "Gwanrole", "Panatarg"};
         FileOperations.writeXLS(xlsRecords, "testtt.xls" );
 
-        FileOperations.readXLS("testtt.xls" );
+        List<Object[]> readFromXLS = FileOperations.readXLS("testtt.xls");
+        printArray(readFromXLS);
+
+        xlsRecords = new String[] {"1j2h3g4b5a", "ABCDEF"};
+        FileOperations.appendXLS(xlsRecords, "testtt.xls");
+
+        readFromXLS = FileOperations.readXLS("testtt.xls");
+        printArray(readFromXLS);
     }
+
+    private static void printArray(List<Object[]> readFromXLS) {
+        for (Object[] str : readFromXLS ) {
+            for (Object s : str ) {
+                System.out.print(s + "\t\t");
+            }
+            System.out.println();
+        }
+    }
+
 
     public String getGreeting() {
         return "Hello worldapp.";
