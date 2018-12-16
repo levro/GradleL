@@ -4,10 +4,10 @@
     <bytecodeTargetLevel>
       <module name="GradleL_main" target="1.8" />
       <module name="GradleL_test" target="1.8" />
-      <module name="main_module_main" target="1.7" />
-      <module name="main_module_test" target="1.7" />
-      <module name="utils_module_main" target="1.7" />
-      <module name="utils_module_test" target="1.7" />
+      <module name="main_module_main" target="1.8" />
+      <module name="main_module_test" target="1.8" />
+      <module name="utils_module_main" target="1.8" />
+      <module name="utils_module_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

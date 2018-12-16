@@ -1,11 +1,8 @@
-
 plugins {
-    id 'java'
     id 'application'
 }
 
-sourceCompatibility = JavaVersion.VERSION_1_7
-targetCompatibility = JavaVersion.VERSION_1_7
+version = '1.0'
 
 mainClassName = 'App'
 
@@ -15,47 +12,10 @@ dependencies {
     
     compile project(":utils_module")
 
-    // Use Log4j logging
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.1'
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.1'
 }
 
-repositories {
-    mavenCentral()
-}
-
 jar {
     manifest.attributes("Main-Class": mainClassName);
-}
-
-task readProps{
-    doLast {
-        Properties props = new Properties()
-        File propsFile = new File("props.txt")
-        props.load(propsFile.newDataInputStream())
-        println props.getProperty('superKey')
-
-        println(props.stringPropertyNames())
-    }
-}
-
-task writeProps {
-    doLast {
-        Properties props = new Properties()
-        File propsFile = new File("props.txt")
-        Integer rand = new Random().next(4)
-        props.setProperty('defaultKey', "defaultValue")
-        props.setProperty('superKey', rand.toString())
-        props.store(propsFile.newWriter(), null)
-    }
-}
-
-task printProps {
-    doLast {
-        println commandLineProjectProp
-        println gradlePropertiesProp
-        println systemProjectProp
-        println System.properties['system']
-        println System.properties['magicWord']
-    }
 }

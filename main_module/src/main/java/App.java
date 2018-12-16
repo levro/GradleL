@@ -14,7 +14,7 @@ public class App {
     public static void main(String[] args) throws IOException {
 
 
-/*        log.error("This is not error message with error level");
+        log.error("This is not error message with error level");
         System.out.println(new App().getGreeting());
 
         String sum = Utils.sumOfTwoStrings("120", "53");
@@ -35,7 +35,6 @@ public class App {
         log.info("Read changed property");
         System.out.println( Utils.readPropertyFromFile( propertyToModiy ) );
 
-*/
 
         String[] xlsRecords = {"Borodops", "Gwanrole", "Panatarg"};
         FileOperations.writeXLS(xlsRecords, "testtt.xls" );
