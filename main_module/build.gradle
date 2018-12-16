@@ -7,9 +7,7 @@ version = '1.0'
 mainClassName = 'App'
 
 dependencies {
-    compile 'com.google.guava:guava:23.0'
-    testCompile 'junit:junit:4.12'
-    
+    compile 'com.google.guava:guava:23.0'    
     compile project(":utils_module")
 }
 

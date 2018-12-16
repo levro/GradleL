@@ -6,6 +6,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/main_module/main_module.iml" filepath="$PROJECT_DIR$/.idea/modules/main_module/main_module.iml" group="main_module" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/main_module/main_module_main.iml" filepath="$PROJECT_DIR$/.idea/modules/main_module/main_module_main.iml" group="main_module" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/main_module/main_module_test.iml" filepath="$PROJECT_DIR$/.idea/modules/main_module/main_module_test.iml" group="main_module" />
+      <module fileurl="file://$PROJECT_DIR$/test_module/test_module.iml" filepath="$PROJECT_DIR$/test_module/test_module.iml" group="test_module" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/test_module/test_module_main.iml" filepath="$PROJECT_DIR$/.idea/modules/test_module/test_module_main.iml" group="test_module" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/test_module/test_module_test.iml" filepath="$PROJECT_DIR$/.idea/modules/test_module/test_module_test.iml" group="test_module" />
       <module fileurl="file://$PROJECT_DIR$/utils_module/utils_module.iml" filepath="$PROJECT_DIR$/utils_module/utils_module.iml" group="utils_module" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/utils_module/utils_module_main.iml" filepath="$PROJECT_DIR$/.idea/modules/utils_module/utils_module_main.iml" group="utils_module" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/utils_module/utils_module_test.iml" filepath="$PROJECT_DIR$/.idea/modules/utils_module/utils_module_test.iml" group="utils_module" />
