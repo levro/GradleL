@@ -7,6 +7,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="utils_module_main" />
+    <orderEntry type="library" name="Gradle: org.apache.logging.log4j:log4j-core:2.11.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.apache.logging.log4j:log4j-api:2.11.1" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.poi:poi-ooxml:3.17" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.poi:poi:3.17" level="project" />
     <orderEntry type="library" name="Gradle: commons-codec:commons-codec:1.10" level="project" />
