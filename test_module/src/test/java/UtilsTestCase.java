@@ -30,4 +30,9 @@ public class UtilsTestCase {
             assertEquals( "java.lang.ArrayIndexOutOfBoundsException: " + index, e.toString());
         }
     }
+
+    @Test
+    public void testCustomException() throws IllegalCharacter {
+        StrUtilsExcept.checkString( "ijanuhbygv");
+    }
 }
