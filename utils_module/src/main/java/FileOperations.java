@@ -10,7 +10,7 @@ public class FileOperations {
     private final static String PROPERTIES_FILE = "custom.properties";
     final static Logger log = LogManager.getLogger( FileOperations.class );
 
-    public static void writeXLS( String[] records, String fileName ) throws IOException {
+    public static void writeXLS( String[] records, String fileName ) {
         Workbook book = new HSSFWorkbook();
         Sheet sheet = book.createSheet( "Records" );
 
@@ -27,15 +27,24 @@ public class FileOperations {
             sheet.autoSizeColumn( 0 );
             sheet.autoSizeColumn( 1 );
         }
-        book.write( new FileOutputStream( fileName ) );
-        book.close();
+        try {
+            book.write( new FileOutputStream( fileName ) );
+            book.close();
+        } catch ( IOException e ) {
+            log.error( "IOException: " + e );
+        }
     }
 
-    public static List<Object[]> readXLS( String fileName ) throws IOException {
-
+    public static List<Object[]> readXLS( String fileName ) {
         List<Object[]> result = new ArrayList<>();
-        FileInputStream excelInputStream = new FileInputStream( new File( fileName ) );
-        Workbook workbook = new HSSFWorkbook( excelInputStream );
+        Workbook workbook = null;
+        FileInputStream excelInputStream = null;
+        try {
+            excelInputStream = new FileInputStream( new File( fileName ) );
+            workbook = new HSSFWorkbook( excelInputStream );
+        } catch ( IOException e ) {
+            log.error( "IOException: " + e );
+        }
         Sheet sheet = workbook.getSheetAt( 0 );
         Iterator<Row> rowItr = sheet.iterator();
         while ( rowItr.hasNext() ) {
@@ -54,15 +63,24 @@ public class FileOperations {
             }
             result.add( currentRow.toArray() );
         }
-        workbook.close();
-        excelInputStream.close();
+        try {
+            workbook.close();
+            excelInputStream.close();
+        } catch ( IOException e ) {
+            log.error( "IOException: " + e );
+        }
         return result;
     }
 
-
-    public static void appendXLS( String[] xlsRecords, String fileName ) throws IOException {
-        FileInputStream excelInputStream = new FileInputStream( new File( fileName ) );
-        Workbook book = new HSSFWorkbook( excelInputStream );
+    public static void appendXLS( String[] xlsRecords, String fileName ) {
+        FileInputStream excelInputStream;
+        Workbook book = null;
+        try {
+            excelInputStream = new FileInputStream( new File( fileName ) );
+            book = new HSSFWorkbook( excelInputStream );
+        } catch ( IOException e ) {
+            log.error( "IOException: " + e );
+        }
         Sheet sheet = book.getSheetAt( 0 );
         int startRow = sheet.getLastRowNum() + 1;
         for ( int i = 0; i < xlsRecords.length; i++ ) {
@@ -76,8 +94,12 @@ public class FileOperations {
             time.setCellStyle( dateStyle );
             time.setCellValue( new Date() );
         }
-        book.write( new FileOutputStream( fileName ) );
-        book.close();
+        try {
+            book.write( new FileOutputStream( fileName ) );
+            book.close();
+        } catch ( IOException e ) {
+            log.error( "IOException: " + e );
+        }
     }
 
     public static void addPropertyToFile( String str ) {
