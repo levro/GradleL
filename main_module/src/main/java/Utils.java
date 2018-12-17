@@ -28,4 +28,18 @@ public class Utils {
         }
         return String.valueOf( a + b );
     }
+
+    public static String getElementByIndex( String[] strs, int index) {
+        return strs[index];
+
+    }
+
+/*    public static String getElementByIndex( String[] strs, int index) throws ArrayIndexOutOfBoundsException{
+        try {
+            return strs[index];
+        } catch ( ArrayIndexOutOfBoundsException e ) {
+            log.error( "ArrayIndexOutOfBoundsException: " + e );
+            return e.toString();
+        }
+    }*/
 }
