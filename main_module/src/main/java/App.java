@@ -8,7 +8,7 @@ import java.util.List;
 
 public class App {
 
-    final static Logger log = LogManager.getLogger(App.class);
+    private final static Logger log = LogManager.getLogger(App.class);
 
     public static void main(String[] args) {
 

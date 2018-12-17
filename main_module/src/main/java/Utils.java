@@ -2,13 +2,10 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.*;
-import java.util.Scanner;
-
 public class Utils {
 
-    static final Level epicFail = Level.forName("EPIC.FAIL!", 50);
-    final static Logger log = LogManager.getLogger( Utils.class);
+    private static final Level epicFail = Level.forName("EPIC.FAIL!", 50);
+    private final static Logger log = LogManager.getLogger( Utils.class);
 
     public static String sumOfTwoStrings (String str1, String str2) {
 

@@ -8,7 +8,7 @@ import java.util.*;
 
 public class FileOperations {
     private final static String PROPERTIES_FILE = "custom.properties";
-    final static Logger log = LogManager.getLogger( FileOperations.class );
+    private final static Logger log = LogManager.getLogger( FileOperations.class );
 
     public static void writeXLS( String[] records, String fileName ) {
         Workbook book = new HSSFWorkbook();
@@ -42,6 +42,8 @@ public class FileOperations {
         try {
             excelInputStream = new FileInputStream( new File( fileName ) );
             workbook = new HSSFWorkbook( excelInputStream );
+        } catch ( FileNotFoundException e ) {
+            log.error( "FNFException: " + e );
         } catch ( IOException e ) {
             log.error( "IOException: " + e );
         }
@@ -78,6 +80,8 @@ public class FileOperations {
         try {
             excelInputStream = new FileInputStream( new File( fileName ) );
             book = new HSSFWorkbook( excelInputStream );
+        } catch ( FileNotFoundException e ) {
+            log.error( "FNFException: " + e );
         } catch ( IOException e ) {
             log.error( "IOException: " + e );
         }
