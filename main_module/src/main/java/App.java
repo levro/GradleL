@@ -13,36 +13,33 @@ public class App {
 
     public static void main(String[] args) throws IOException {
 
-
+        log.warn("===============================================LOGGING=============================================");
         log.error("This is not error message with error level");
-        System.out.println(new App().getGreeting());
-
         String sum = Utils.sumOfTwoStrings("120", "53");
         System.out.println("Result is " + sum);
-        log.info("=============================================================================================");
 
+        log.warn("===============================================PROPERTIES==========================================");
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
         String propertyName = String.valueOf(System.currentTimeMillis());
-        log.info("Add to file 'gradle.properties' new property [" + propertyName + "] with current time");
-        Utils.addPropertyToFile( propertyName + "=" + dateFormat.format(date) );
-        System.out.println( "---------------------------------------------" );
-        System.out.println( Utils.readPropertyFromFile( propertyName ) );
-
+        log.info("Add to file 'custom.properties' new property [" + propertyName + "] with current time");
+        FileOperations.addPropertyToFile( propertyName + "=" + dateFormat.format(date) );
+        System.out.println( FileOperations.readPropertyFromFile( propertyName ) );
         String propertyToModiy = "mainProperty";
         log.info("Change property [" + propertyToModiy + "] in 'gradle.properties' file");
-        Utils.modifyProperty(propertyToModiy, "water");
+        FileOperations.modifyProperty(propertyToModiy, "water");
         log.info("Read changed property");
-        System.out.println( Utils.readPropertyFromFile( propertyToModiy ) );
+        System.out.println( FileOperations.readPropertyFromFile( propertyToModiy ) );
 
-
+        log.warn("===============================================EXCEL===============================================");
         String[] xlsRecords = {"Borodops", "Gwanrole", "Panatarg"};
         FileOperations.writeXLS(xlsRecords, "testtt.xls" );
 
         List<Object[]> readFromXLS = FileOperations.readXLS("testtt.xls");
         printArray(readFromXLS);
+        System.out.println();
 
-        xlsRecords = new String[] {"1j2h3g4b5a", "ABCDEF"};
+        xlsRecords = new String[] {"1j2h3g4b5a", "*&^%$^##%^"};
         FileOperations.appendXLS(xlsRecords, "testtt.xls");
 
         readFromXLS = FileOperations.readXLS("testtt.xls");
@@ -56,10 +53,5 @@ public class App {
             }
             System.out.println();
         }
-    }
-
-
-    public String getGreeting() {
-        return "Hello worldapp.";
     }
 }
