@@ -32,7 +32,17 @@ public class UtilsTestCase {
     }
 
     @Test
-    public void testCustomException() throws IllegalCharacter {
-        StrUtilsExcept.checkString( "ijanuhbygv");
+    public void testCustomException(){
+        try {
+            StrUtilsExcept.checkString( "iiiaooo");
+        } catch ( IllegalCharacter e ) {
+            assertEquals( "IllegalCharacter: 'a' is not allowed.", e.toString() );
+        }
+
+        try {
+            StrUtilsExcept.checkString( "tttbuuu");
+        } catch ( IllegalCharacter e ) {
+            assertEquals( "IllegalCharacter: 'b' is not allowed.", e.toString() );
+        }
     }
 }
