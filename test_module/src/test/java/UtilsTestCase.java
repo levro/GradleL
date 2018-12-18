@@ -1,3 +1,4 @@
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
@@ -5,7 +6,20 @@ import static junit.framework.TestCase.assertEquals;
 
 
 public class UtilsTestCase {
+    private static final Level mediumFail = Level.forName( "50/50FAIL", 25);
     private final static Logger log = LogManager.getLogger( UtilsTestCase.class );
+
+    @Test
+    public void testLogger() {
+        log.info("Test log levels");
+        log.trace("This is a trace message");
+        log.debug("This is a debug message");
+        log.info("This is an info message");
+        log.log( mediumFail, "This is a medium message" );
+        log.warn("This is a warn message");
+        log.error("This is an error message");
+        log.fatal("This is a fatal message");
+    }
 
     @Test
     public void testSumStrings() {

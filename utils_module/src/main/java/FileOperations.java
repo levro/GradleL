@@ -163,6 +163,7 @@ public class FileOperations {
             log.error( "IOException!!!!!" + e );
             result = e.toString();
         }
-        return result;
+
+        return result.replaceAll( "\r", "" );
     }
 }

@@ -12,37 +12,46 @@ public class App {
 
     public static void main(String[] args) {
 
-        log.warn("===============================================LOGGING=============================================");
-        log.error("This is not error message with error level");
-        String sum = Utils.sumOfTwoStrings("120", "53");
-        System.out.println("Result is " + sum);
+        addProp();
+        editProp();
 
-        log.warn("===============================================PROPERTIES==========================================");
+        writeToExcel();
+        addToExcel();
+        readFromExcel();
+    }
+
+    private static void writeToExcel() {
+        log.warn( "Creating Excel file with 3 records" );
+        String[] xlsRecords = {"1One", "2Two", "9Nine"};
+        FileOperations.writeXLS(xlsRecords, "testtt.xls" );
+    }
+
+    private static void addToExcel() {
+        log.warn( "Adding to Excel file 2 records" );
+        String[] xlsRecords = new String[] {"1j2h", "##%^"};
+        FileOperations.appendXLS(xlsRecords, "testtt.xls");
+    }
+
+    private static void readFromExcel() {
+        log.warn( "Reading from Excel file all records" );
+        List<Object[]> readFromXLS = FileOperations.readXLS("testtt.xls");
+        printArray(readFromXLS);
+    }
+
+    private static void addProp() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
         String propertyName = String.valueOf(System.currentTimeMillis());
-        log.info("Add to file 'custom.properties' new property [" + propertyName + "] with current time");
+        log.warn("Add to file 'custom.properties' new property [" + propertyName + "] with current time");
         FileOperations.addPropertyToFile( propertyName + "=" + dateFormat.format(date) );
-        System.out.println( FileOperations.readPropertyFromFile( propertyName ) );
+        log.fatal("New property: " + FileOperations.readPropertyFromFile( propertyName ));
+    }
+
+    private static void editProp() {
         String propertyToModiy = "mainProperty";
-        log.info("Change property [" + propertyToModiy + "] in 'gradle.properties' file");
-        FileOperations.modifyProperty(propertyToModiy, "water");
-        log.info("Read changed property");
-        System.out.println( FileOperations.readPropertyFromFile( propertyToModiy ) );
-
-        log.warn("===============================================EXCEL===============================================");
-        String[] xlsRecords = {"Borodops", "Gwanrole", "Panatarg"};
-        FileOperations.writeXLS(xlsRecords, "testtt.xls" );
-
-        List<Object[]> readFromXLS = FileOperations.readXLS("testtt.xls");
-        printArray(readFromXLS);
-        System.out.println();
-
-        xlsRecords = new String[] {"1j2h3g4b5a", "*&^%$^##%^"};
-        FileOperations.appendXLS(xlsRecords, "testtt.xls");
-
-        readFromXLS = FileOperations.readXLS("testtt.xls");
-        printArray(readFromXLS);
+        log.warn("Change property [" + propertyToModiy + "] in 'custom.properties' file");
+        FileOperations.modifyProperty(propertyToModiy, "air");
+        log.fatal("Changed property: " + FileOperations.readPropertyFromFile( propertyToModiy ));
     }
 
     private static void printArray(List<Object[]> readFromXLS) {

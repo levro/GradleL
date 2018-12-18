@@ -8,38 +8,17 @@ public class Utils {
     private final static Logger log = LogManager.getLogger( Utils.class);
 
     public static String sumOfTwoStrings (String str1, String str2) {
-
-        log.info("Test log levels");
-
-        log.trace("This is a trace message");
-        log.debug("This is a debug message");
-        log.info("This is an info message");
-        log.warn("This is a warn message");
-        log.error("This is an error message");
-        log.fatal("This is a fatal message");
-        log.log(epicFail, "This is a epicFail message");
-        long a;
-        long b;
+        long result = 0;
         try {
-            a = Long.parseLong( str1 );
-            b = Long.parseLong( str2 );
+            result = Long.parseLong( str1 ) + Long.parseLong( str2 );
         } catch ( NumberFormatException e ) {
-            return "0";
+            log.log(epicFail, "This is not numbers!");
         }
-        return String.valueOf( a + b );
+        return String.valueOf( result );
     }
 
     public static String getElementByIndex( String[] strs, int index) {
         return strs[index];
 
     }
-
-/*    public static String getElementByIndex( String[] strs, int index) throws ArrayIndexOutOfBoundsException{
-        try {
-            return strs[index];
-        } catch ( ArrayIndexOutOfBoundsException e ) {
-            log.error( "ArrayIndexOutOfBoundsException: " + e );
-            return e.toString();
-        }
-    }*/
 }
